@@ -1,0 +1,36 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Authentication Language Lines
+|--------------------------------------------------------------------------
+|
+| The following language lines are used during authentication for various
+| messages that we need to display to the user. You are free to modify
+| these language lines according to your application's requirements.
+|
+*/
+
+return [
+
+    'status' => 'الحالة',
+    'active' => 'مفعل',
+    'deactivated' => 'غير مفعل',
+    'slug' => 'Slug',
+    'created_by' => 'تم الانشاء بواسطة',
+    'create' => 'انشاء',
+    'edit' => 'تعديل',
+    'delete' => 'حذف',
+    'update' => 'تحديث',
+    'hi' => 'مرحباا',
+    'yes_feature' => 'نعم ميزة',
+    'not_feature' => 'لا',
+    "success_create" => 'تم الانشاء بنجاح',
+    "success_update" => 'تم التحديث  بنجاح',
+    'name' => 'الاسم',
+    'watch' => 'مشاهدة',
+    'wont_change_image' => ' * يمكن ترك حقل الصوره فارغ اذ لم تكون تريد تغيرها',
+    'status_1' => 'مفعل',
+    'status_0' => 'غير مفعل',
+
+];
