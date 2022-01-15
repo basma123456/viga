@@ -14,6 +14,7 @@
 return [
     'name_ar' => 'اسم البلد باللغة العربية',
     'name_en' => 'اسم البلد باللغة الانجليزية',
-    'edit_country' => 'تعديل بلد'
+    'edit_country' => 'تعديل بلد',
+    'country_information' => 'معلومات البلد'
 
 ];

@@ -182,6 +182,7 @@ return [
         'longitude'             => 'خطول الطول',
         'latitude'              => 'خطول العرض',
         'banner'                => 'صورة لافتة',
-        'thumbnail'             => 'صورة مصغرة'
+        'thumbnail'             => 'صورة مصغرة',
+        'category'              => 'التصنيف الرائيسيى'
     ],
 ];

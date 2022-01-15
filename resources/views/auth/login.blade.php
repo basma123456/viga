@@ -1,146 +1,93 @@
-{{--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">--}}
-{{--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>--}}
-{{--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--}}
-{{--<!------ Include the above in your HEAD tag ---------->--}}
+@include('dashboard.layouts.head')
 
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- BEGIN: Body-->
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="icon" href="Favicon.png">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-    <title>Laravel</title>
-    <style>
-        @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
-
-        body{
-            margin: 0;
-            font-size: .9rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: #212529;
-            text-align: left;
-            background-color: #f5f8fa;
-        }
-
-        .navbar-laravel
-        {
-            box-shadow: 0 2px 4px rgba(0,0,0,.04);
-        }
-
-        .navbar-brand , .nav-link, .my-form, .login-form
-        {
-            font-family: Raleway, sans-serif;
-        }
-
-        .my-form
-        {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .my-form .row
-        {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .login-form
-        {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .login-form .row
-        {
-            margin-left: 0;
-            margin-right: 0;
-        }
-    </style>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-    <div class="container">
-        <a class="navbar-brand" href="#">Yelp</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-    </div>
-</nav>
-{{--    {{dd(auth()->guard())}}--}}
-<main class="login-form">
-    <div class="cotainer">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Login</div>
-                    <div class="card-body">
-                        <form action="{{route("dashboard.loginProcess")}}" method="POST">
-                            @csrf
-                            {{method_field('post')}}
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="email" class="form-control @error('email') is-invalid @enderror" name="email" required autofocus>
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+<body class="vertical-layout vertical-menu-modern 1-column   blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <section class="row flexbox-container">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <div class="col-lg-4 col-md-8 col-10 box-shadow-2 p-0">
+                            <div class="card border-grey border-lighten-3 m-0">
+                                <div class="card-header border-0">
+                                    <div class="card-title text-center">
+                                        <div class="p-1"><img src="{{URL::asset('assets/app-assets/images/logo/logo-dark.png')}}" alt="branding logo"></div>
+                                    </div>
+                                    <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span>Login with Modern</span>
+                                    </h6>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form-horizontal form-simple" action="{{route("dashboard.loginProcess")}}" method="post">
+                                            @csrf
+                                            {{method_field('post')}}
+                                            <fieldset class="form-group position-relative has-icon-left mb-0">
+                                                <input type="text" class="form-control" id="Email" placeholder="Your Email Address" name="email" required autocomplete="">
+                                                <div class="form-control-position">
+                                                    <i class="la la-user"></i>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset class="form-group position-relative has-icon-left">
+                                                <input type="password"  name="password" class="form-control" id="user-password" placeholder="Enter Password" required>
+                                                <div class="form-control-position">
+                                                    <i class="la la-key"></i>
+                                                </div>
+                                            </fieldset>
+                                            <div class="form-group row">
+                                                <div class="col-sm-6 col-12 text-center text-sm-left">
+                                                    <fieldset>
+                                                        <input type="checkbox" id="remember-me" class="chk-remember">
+                                                        <label for="remember-me"> Remember Me</label>
+                                                    </fieldset>
+                                                </div>
+{{--                                                <div class="col-sm-6 col-12 text-center text-sm-right"><a href="recover-password.html" class="card-link">Forgot Password?</a></div>--}}
+                                            </div>
+                                            <button type="submit" class="btn btn-info btn-block"><i class="ft-unlock"></i> Login</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="">
+{{--                                        <p class="float-xl-left text-center m-0"><a href="recover-password.html" class="card-link">Recover--}}
+{{--                                                password</a></p>--}}
+{{--                                        <p class="float-xl-right text-center m-0">New to Moden Admin? <a href="register-simple.html" class="card-link">Sign Up</a></p>--}}
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-
-
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                    </form>
-                </div>
+                </section>
+
             </div>
         </div>
     </div>
-    </div>
-
-</main>
+    <!-- END: Content-->
 
 
+    <!-- BEGIN: Vendor JS-->
+    <script src="{{URL::asset('assets/app-assets/vendors/js/vendors.min.js')}}"></script>
+    <!-- BEGIN Vendor JS-->
 
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{{URL::asset('assets/app-assets/vendors/js/forms/icheck/icheck.min.js')}}"></script>
+    <script src="{{URL::asset('assets/app-assets/vendors/js/forms/validation/jqBootstrapValidation.js')}}"></script>
+    <!-- END: Page Vendor JS-->
 
+    <!-- BEGIN: Theme JS-->
+    <script src="{{URL::asset('assets/app-assets/js/core/app-menu.js')}}"></script>
+    <script src="{{URL::asset('assets/app-assets/js/core/app.js')}}"></script>
+    <!-- END: Theme JS-->
 
-
+    <!-- BEGIN: Page JS-->
+    <script src="{{URL::asset('assets/app-assets/js/scripts/forms/form-login-register.js')}}"></script>
+    <!-- END: Page JS-->
 
 </body>
+<!-- END: Body-->
+
 </html>

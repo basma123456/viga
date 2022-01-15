@@ -35,6 +35,8 @@ class CategoryUpdateRequest extends FormRequest
             'status' => ['required',Rule::in(['0','1'])],
             'icon_map'  => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'icon_category'  => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'amenities'         => 'required|array',
+            'amenities.*'       => 'exists:amenities,id',
         ];
     }
 }

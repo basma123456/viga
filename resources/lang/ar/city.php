@@ -21,6 +21,6 @@ return [
     'meta_description' => 'ميتا الوصف',
     'latitude'  => 'خط العرض',
     'longitude'  => 'خط الطول',
-    'country'   =>  'المدينة',
+    'country'   =>  'البلد',
 
 ];

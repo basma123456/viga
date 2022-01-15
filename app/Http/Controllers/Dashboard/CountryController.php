@@ -13,7 +13,7 @@ class CountryController extends Controller
 {
     public function index() {
 
-        $countries = Country::latest()->paginate(1);
+        $countries = Country::latest()->paginate(20);
         return view("dashboard.countries.index", compact('countries'));
     }// End Index
     public function create() {

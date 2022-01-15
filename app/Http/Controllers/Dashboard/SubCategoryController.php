@@ -17,7 +17,7 @@ class SubCategoryController extends Controller
 {
     use ImageTrait;
     public function index() {
-        $sub_categories = SubCategory::with(['adminId', 'category'])->latest()->paginate(1);
+        $sub_categories = SubCategory::with(['adminId', 'category'])->latest()->paginate(20);
 //        return $sub_categories;
         return view("dashboard.sub_categories.index", compact('sub_categories'));
     }// End Index

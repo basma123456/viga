@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
+use App\Models\Amenity;
 use App\Models\Category;
 use App\Traits\ImageTrait;
 use Illuminate\Http\Request;
@@ -15,16 +16,18 @@ class CategoryController extends Controller
 {
     use ImageTrait;
     public function index() {
-        $categories = Category::with('adminId')->latest()->paginate(1);
+        $categories = Category::with('adminId')->latest()->paginate(20);
         return view("dashboard.categories.index", compact('categories'));
     }// End Index
 
     public function create() {
-
-        return view("dashboard.categories.create");
+        $amenities = Amenity::where('status', 1)->get();
+        return view("dashboard.categories.create", compact('amenities'));
     }// End Create
 
     public function store(CategoryStoreRequest $request) {
+
+
         DB::beginTransaction();
         try {
             $category = Category::create([
@@ -38,7 +41,10 @@ class CategoryController extends Controller
                 'icon_map' => $this->imageStore($request->icon_map, 'files','categories/iconMap'),
                 'icon_category' => $this->imageStore($request->icon_category, 'files','categories/iconCategory'),
                 'admin_id' => auth()->user()->id,
-            ]);
+            ]);// End Create Category
+
+            // Attach Amenities To Category
+            $category->amenities()->attach($request->amenities);
 
             DB::commit();
             toastr()->success(__('global.success_create'));
@@ -52,8 +58,13 @@ class CategoryController extends Controller
     }// End Store
 
     public function edit($id) {
-        $category = Category::findOrFail($id);
-        return view("dashboard.categories.edit", compact('category'));
+        $category = Category::with(['amenities'])->findOrFail($id);
+        $category_amenities = [];
+        foreach ($category->amenities as $category_amenity) {
+            $category_amenities[] = $category_amenity->id;
+        }
+        $amenities = Amenity::where('status', 1)->get();
+        return view("dashboard.categories.edit", compact('category','amenities', 'category_amenities'));
     }/// End Edit
 
     public function update(CategoryUpdateRequest $request,$id) {
@@ -88,6 +99,8 @@ class CategoryController extends Controller
                 'icon_map' =>    $iconMap,
                 'icon_category' => $iconCategory,
             ]);
+            // Attach Amenities To Category
+            $category->amenities()->sync($request->amenities);
             DB::commit();
             toastr()->info(__('global.success_update'));
             return redirect()->back();

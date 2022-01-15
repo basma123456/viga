@@ -14,7 +14,7 @@ class AmenityController extends Controller
 {
     use ImageTrait;
     public function index() {
-        $amenities =  Amenity::latest()->paginate(1);
+        $amenities =  Amenity::latest()->paginate(20);
         return view("dashboard.amenities.index",compact('amenities'));
     }// End Index
 

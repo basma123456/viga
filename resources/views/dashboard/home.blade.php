@@ -1,19 +1,18 @@
-@extends('dashboard.layout.master')
+@extends('dashboard.layouts.master')
+
 @section('title')
-    Home
+    @lang('sidebar.home')
 @endsection
 @section('active')
     home
 @endsection
-@section('content')
-    <div class="utf_dashboard_content">
-        <div id="titlebar" class="dashboard_gradient">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>@lang("sidebar.home")</h2>
+@section('card_title')
+    @lang('sidebar.home')
+@endsection
 
-                </div>
-            </div>
-        </div>
-    </div>
+@section('content')
+@endsection
+
+
+@section('script')
 @endsection

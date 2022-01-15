@@ -17,7 +17,7 @@ class CityController extends Controller
     use ImageTrait;
 
     public function index() {
-        $cities = City::with(['adminId','country'])->latest()->paginate(1);
+        $cities = City::with(['adminId','country'])->latest()->paginate(20);
         return view("dashboard.cities.index", compact('cities'));
     }// End Index
 
@@ -40,7 +40,7 @@ class CityController extends Controller
                 'longitude'         => $request->longitude,
                 'slug'              => Str::slug($request->slug),
                 'thumbnail_image'   => $this->imageStore($request->thumbnail,'files','cities/thumbnail'),
-                'banner_image'   => $this->imageStore($request->banner,'files','cities/banner'),
+                'banner_image'      => $this->imageStore($request->banner,'files','cities/banner'),
             ]);
             DB::commit();
             toastr()->success(__('global.success_create'));
@@ -59,7 +59,8 @@ class CityController extends Controller
         return view("dashboard.cities.edit" ,compact('city', 'countries'));
     }// End Edit
 
-    public function update(CityUpdateRequest $request,$id) {
+    public function update(Request $request,$id) {
+
         DB::beginTransaction();
         try {
             $city = City::findOrFail($id);
@@ -90,7 +91,7 @@ class CityController extends Controller
                 'banner_image'      => $banner
             ]);
             DB::commit();
-            toastr()->success(__('global.success_update'));
+            toastr()->info(__('global.success_update'));
             return redirect()->back();
         }
         catch (\Exception $e) {

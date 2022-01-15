@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "Dashboard" middleware group. Now create something great!
 |
 */
-// Route Login Auth
+//// Route Login Auth
 Route::get("dashboard/login", 'AuthDashboardController@login')->name("dashboard.login");
 Route::post("dashboard/loginProcess", 'AuthDashboardController@loginProcess')->name("dashboard.loginProcess");
 // For Language
@@ -20,7 +20,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     // Dashboard
     Route::prefix('dashboard')->name('dashboard.')->middleware(['auth:admins'])->group(function(){
         // Home Page
-        Route::get('/home','HomeController@index')->name("home");
+      Route::get('home','HomeController@index')->name("home");
         //Logout
         Route::post("logout", 'AuthDashboardController@logout')->name("logout");
 
@@ -33,11 +33,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
         //Countries Route
         Route::resource('countries', 'CountryController');
 
+        //Cities Route
+        Route::resource('cities', 'CityController');
+        
         //Amenities Route
         Route::resource('amenities', 'AmenityController');
 
-        //Cities Route
-        Route::resource('cities', 'CityController');
+
 
     });
 
