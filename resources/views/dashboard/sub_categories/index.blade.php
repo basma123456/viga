@@ -21,8 +21,6 @@
                 <th scope="col">@lang('global.name')</th>
                 <th scope="col">@lang('sub.category_name')</th>
                 <th scope="col">@lang('global.slug')</th>
-                <th scope="col">@lang('category.seo_title')</th>
-                <th scope="col">@lang('category.is_feature')</th>
                 <th scope="col">@lang('category.priority')</th>
                 <th scope="col">@lang('global.created_by')</th>
                 <th scope="col">@lang('global.status')</th>
@@ -36,8 +34,6 @@
                    <td>{{$category->name}}</td>
                    <td>{{$category->category->name}}</td>
                    <td>{{$category->slug}}</td>
-                   <td>{{$category->seo_title}}</td>
-                   <td>{{$category->is_feature}}</td>
                    <td>{{$category->priority}}</td>
                    <td>{{$category->adminId->name}}</td>
                    <td>

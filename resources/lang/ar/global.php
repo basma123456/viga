@@ -27,6 +27,7 @@ return [
     'not_feature' => 'لا',
     "success_create" => 'تم الانشاء بنجاح',
     "success_update" => 'تم التحديث  بنجاح',
+    "success_delete" => 'تم الحذف  بنجاح',
     'name' => 'الاسم',
     'watch' => 'مشاهدة',
     'wont_change_image' => ' * يمكن ترك حقل الصوره فارغ اذ لم تكون تريد تغيرها',
@@ -35,6 +36,7 @@ return [
     'seo_tools'     => 'أدوات تحسين محركات البحث',
     'images'         => 'الصور',
     'setting'        => 'الاعدادات',
-    'position_in_map'      =>   'الاحدثيات على الخريظة'
+    'position_in_map'      =>   'الاحدثيات على الخريظة',
+    'choose'                =>  'اختار .....'
 
 ];

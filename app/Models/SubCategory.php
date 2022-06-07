@@ -7,10 +7,8 @@ use Spatie\Translatable\HasTranslations;
 
 class SubCategory extends Model
 {
-    use HasTranslations;
     protected $table = 'sub_categories';
     protected $guarded = [];
-    public $translatable = ['name'];
     public $timestamps = true;
 
     public function adminId() {
@@ -18,7 +16,13 @@ class SubCategory extends Model
             ->select('id', 'name');
     }
     public function category() {
-        return $this->belongsTo(Category::class,'category_id', 'id')
-            ->select('id', 'name');
+        return $this->belongsTo(Category::class,'category_id')
+            ->select('id', 'name')
+            ->where('status' , 1);
+    }
+
+    public function products() {
+        return $this->hasMany(Product::class)
+        ->where('status', 1);
     }
 }

@@ -33,4 +33,24 @@ return [
     'all_cities' => 'كل المدن',
     'create_city' => 'اضافة مدينة',
 
+    'sliders'   => 'سليدرز',
+    'all_sliders' => 'كل الاسليدرز',
+    'create_slider' => 'اضافة اسليدرز',
+
+    'prices'                => 'الاسعار',
+    'all_prices'            => 'كل الاسعار',
+    'create_price'          => 'اضافة سعر',
+
+    'materials'                 => 'الخامات',
+    'all_materials'             => 'كل الخامات',
+    'create_material'           => 'اضافة خامة',
+    'SectionOne'           => 'السيكشن الأول',
+
+    'products'                => 'المنتجات',
+    'all_products'            => 'كل المنتجات',
+    'create_products'          => 'اضافة منتج',
+
+    'settings'                => 'الأعدادات'
+
+
 ];

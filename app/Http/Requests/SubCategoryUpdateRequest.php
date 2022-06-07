@@ -25,17 +25,13 @@ class SubCategoryUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_en' => ['required', Rule::unique('sub_categories', 'name->en')->ignore($this->sub_category)],
-            'name_ar' => ['required', Rule::unique('sub_categories', 'name->ar')->ignore($this->sub_category)],
-            'slug' => ['required',Rule::unique('sub_categories', 'slug')->ignore($this->sub_category)],
+            'name'      => ['required', Rule::unique('sub_categories', 'name')->ignore($this->sub_category)],
+            'slug'      => ['required',Rule::unique('sub_categories', 'slug')->ignore($this->sub_category)],
+            'priority'  =>  ['required','regex:/^[0-9]+$/',Rule::unique('sub_categories', 'priority')->ignore($this->sub_category)],
             'meta_desc' => 'required',
-            'seo'   => 'required',
-            'priority' => 'required|regex:/^[0-9]+$/',
-            'feature' => ['required',Rule::in(['0','1'])],
-            'status' => ['required',Rule::in(['0','1'])],
-            'icon_map'  => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'icon_category'  => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'category' => 'required|exists:categories,id',
+            'seo'       => 'required',
+            'status'    => ['required',Rule::in(['0','1'])],
+            'category'  => 'required|exists:categories,id',
         ];
     }
 }

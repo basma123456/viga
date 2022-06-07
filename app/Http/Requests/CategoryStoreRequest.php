@@ -25,18 +25,14 @@ class CategoryStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar'           => 'required|unique:categories,name->ar',
-            'name_en'           => 'required|unique:categories,name->en',
+            'name'              => 'required|unique:categories,name',
             'slug'              => 'required|unique:categories,slug',
             'meta_desc'         => 'required',
             'seo'               => 'required',
-            'priority'          => 'required|regex:/^[0-9]+$/',
-            'feature'           => ['required',Rule::in(['0','1'])],
             'status'            => ['required',Rule::in(['0','1'])],
-            'icon_map'          => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'icon_category'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'amenities'         => 'required|array',
-            'amenities.*'       => 'exists:amenities,id',
+            'has_child'         => ['required', Rule::in(['0',1])],
+            'code_category'     => ['required', 'min:2' ,'max:10', 'unique:categories,category_code'],
+            'priority'          => ['required', 'unique:categories,priority'],
         ];
     }
 }

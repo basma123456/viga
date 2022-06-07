@@ -12,14 +12,16 @@
 */
 
 return [
-    'name_ar' => 'اسم التصنيف باللغة العربية',
-    'name_en' => 'اسم التصنيف باللغة الانجليزية',
-    'icon_map' => 'الأيقونة على الخريظة',
-    'icon_category' => 'أيقونة التصنيف',
-    'priority' => 'الترتيب',
-    'seo_title' => 'عنوان SEO ',
-    'meta_description' => 'ميتا الوصف',
-    'is_feature' => 'ميزة',
-    'edit_category' => 'تعديل التصنيف',
+    'name'                  => 'اسم التصنيف',
+    'icon_map'              => 'الأيقونة على الخريظة',
+    'icon_category'         => 'أيقونة التصنيف',
+    'priority'              => 'الترتيب',
+    'seo_title'             => 'عنوان SEO ',
+    'meta_description'      => 'ميتا الوصف',
+    'edit_category'         => 'تعديل التصنيف',
+    'has_sub_category'      => 'يوجد  تصنيف فرعى',
+    'no_have_subCategory'   => 'لا يوجد تصنيف فرعى ' ,
+    'code_category'         => 'كود التصنيف',
+    'image'                 => 'صورة القسم',
 
 ];

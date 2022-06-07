@@ -28,15 +28,9 @@
         <div class="form-body">
             <h4 class="form-section"><i class="la la-folder-open"></i> @lang('global.name')</h4>
             <div class="form-group row">
-                <label class="col-md-3 label-control" for="name_ar">@lang('category.name_ar')</label>
+                <label class="col-md-3 label-control" for="name">@lang('category.name')</label>
                 <div class="col-md-9 mx-auto">
-                    <input type="text" id="name_ar" class="form-control" placeholder="@lang('category.name_en')" name="name_ar" value="{{old('name_ar')}}">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-3 label-control" for="name_en">@lang('category.name_en')</label>
-                <div class="col-md-9 mx-auto">
-                    <input type="text" id="name_en" class="form-control" placeholder="@lang('category.name_en')" name="name_en" value="{{old('name_en')}}">
+                    <input type="text" id="name" class="form-control" placeholder="@lang('category.name')" name="name" value="{{old('name')}}">
                 </div>
             </div>
 
@@ -74,22 +68,6 @@
             </div>
 
         </div>
-
-        <h4 class="form-section"><i class="la la-file-image-o" style="font-size: 20px"></i> @lang('global.images')</h4>
-
-        <div class="form-group row">
-            <label class="col-md-3 label-control" for="icon_map">@lang('category.icon_map')</label>
-            <div class="col-md-9 mx-auto">
-                <input type="file" id="icon_map" class="form-control" placeholder="@lang('category.icon_map')" name="icon_map"  accept="image/jpeg , image/png ,image/gif,image/jpg, image/svg"  value="{{old('icon_map')}}">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-md-3 label-control" for="icon_category">@lang('category.icon_category')</label>
-            <div class="col-md-9 mx-auto">
-                <input type="file" id="icon_category" class="form-control" placeholder="@lang('category.icon_category')"  accept="image/jpeg , image/png ,image/gif,image/jpg, image/svg" name="icon_category" value="{{old('icon_category')}}">
-            </div>
-        </div>
         <h4 class="form-section"><i class="la la-cog" style="font-size: 20px"></i> @lang('global.setting')</h4>
         <div class="form-group row">
             <label class="col-md-3 label-control" for="priority">@lang('category.priority')</label>
@@ -98,15 +76,6 @@
             </div>
         </div>
 
-        <div class="form-group row">
-            <label class="col-md-3 label-control" for="feature">@lang('category.is_feature')</label>
-            <div class="col-md-9 mx-auto">
-                <select id="feature" name="feature" class="form-control">
-                    <option value="1" {{old('feature') == 1 ? 'selected' :''}}>@lang('global.yes_feature')</option>
-                    <option value="0" {{old('feature') == 0 ? 'selected' :''}}>@lang('global.not_feature')</option>
-                </select>
-            </div>
-        </div>
         <div class="form-group row">
             <label class="col-md-3 label-control" for="status">@lang('global.status')</label>
             <div class="col-md-9 mx-auto">

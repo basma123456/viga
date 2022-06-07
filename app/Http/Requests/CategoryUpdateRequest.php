@@ -25,18 +25,13 @@ class CategoryUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_en' => ['required', Rule::unique('categories', 'name->en')->ignore($this->category)],
-            'name_ar' => ['required', Rule::unique('categories', 'name->ar')->ignore($this->category)],
-            'slug' => ['required',Rule::unique('categories', 'slug')->ignore($this->category)],
-            'meta_desc' => 'required',
-            'seo'   => 'required',
-            'priority' => 'required|regex:/^[0-9]+$/',
-            'feature' => ['required',Rule::in(['0','1'])],
-            'status' => ['required',Rule::in(['0','1'])],
-            'icon_map'  => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'icon_category'  => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'amenities'         => 'required|array',
-            'amenities.*'       => 'exists:amenities,id',
+            'name'              => ['required', Rule::unique('categories', 'name')->ignore($this->category)],
+            'slug'              => ['required',Rule::unique('categories', 'slug')->ignore($this->category)],
+            'code_category'     => ['required', 'min:2' ,'max:10', Rule::unique('categories', 'category_code')->ignore($this->category)],
+            'priority'          => ['required', Rule::unique('categories', 'priority')->ignore($this->category)],
+            'meta_desc'         => 'required',
+            'seo'               => 'required',
+            'status'            => ['required',Rule::in(['0','1'])],
         ];
     }
 }

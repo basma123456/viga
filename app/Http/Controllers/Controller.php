@@ -10,4 +10,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function __construct()
+    {
+      //its just a dummy data object.
+      $settings = \App\Models\Setting::select('*')->first();
+
+      // Sharing is caring
+      \View::share('settings', $settings);
+    }
 }

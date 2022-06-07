@@ -15,10 +15,7 @@ class CreateSubCategoriesTable extends Migration
     {
         Schema::create('sub_categories', function (Blueprint $table){
             $table->id();;
-            $table->string("icon_subcategory",50)->nullable();
-            $table->string("icon_map",50)->nullable();
             $table->boolean('status')->default(1);
-            $table->boolean('is_feature')->default(0); // is for show in main page or not
             $table->string('name');
             $table->string('seo_title');
             $table->integer("priority"); // for sorting the categories

@@ -33,18 +33,17 @@
         <div class="form-body">
             <h4 class="form-section"><i class="la la-folder-open"></i> @lang('global.name')</h4>
             <div class="form-group row">
-                <label class="col-md-3 label-control" for="name_ar">@lang('category.name_ar')</label>
+                <label class="col-md-3 label-control" for="name">@lang('category.name')</label>
                 <div class="col-md-9 mx-auto">
-                    <input type="text" id="name_ar" class="form-control" placeholder="@lang('category.name_en')" name="name_ar" value="{{old('name_ar')}}">
+                    <input type="text" id="name" class="form-control" placeholder="@lang('category.name')" name="name" value="{{old('name')}}">
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-md-3 label-control" for="name_en">@lang('category.name_en')</label>
+                <label class="col-md-3 label-control" for="name">@lang('category.image')</label>
                 <div class="col-md-9 mx-auto">
-                    <input type="text" id="name_en" class="form-control" placeholder="@lang('category.name_en')" name="name_en" value="{{old('name_en')}}">
+                    <input type="file" id="image" name="image"/>
                 </div>
             </div>
-
             <h4 class="form-section"><i class="la la-industry" style="font-size: 20px"></i> @lang('global.seo_tools')</h4>
             <div class="form-group row">
                 <label class="col-md-3 label-control" for="slug">@lang('global.slug')</label>
@@ -67,23 +66,13 @@
             </div>
 
         </div>
-
-        <h4 class="form-section"><i class="la la-file-image-o" style="font-size: 20px"></i> @lang('global.images')</h4>
-
-        <div class="form-group row">
-            <label class="col-md-3 label-control" for="icon_map">@lang('category.icon_map')</label>
-            <div class="col-md-9 mx-auto">
-                <input type="file" id="icon_map" class="form-control" placeholder="@lang('category.icon_map')" name="icon_map"  accept="image/jpeg , image/png ,image/gif,image/jpg, image/svg"  value="{{old('icon_map')}}">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-md-3 label-control" for="icon_category">@lang('category.icon_category')</label>
-            <div class="col-md-9 mx-auto">
-                <input type="file" id="icon_category" class="form-control" placeholder="@lang('category.icon_category')"  accept="image/jpeg , image/png ,image/gif,image/jpg, image/svg" name="icon_category" value="{{old('icon_category')}}">
-            </div>
-        </div>
         <h4 class="form-section"><i class="la la-cog" style="font-size: 20px"></i> @lang('global.setting')</h4>
+        <div class="form-group row">
+            <label class="col-md-3 label-control" for="code_category">@lang('category.code_category')</label>
+            <div class="col-md-9 mx-auto">
+                <input type="number" min="1" id="code_category" class="form-control" placeholder="@lang('category.code_category')" name="code_category" value="{{old('code_category')}}">
+            </div>
+        </div>
         <div class="form-group row">
             <label class="col-md-3 label-control" for="priority">@lang('category.priority')</label>
             <div class="col-md-9 mx-auto">
@@ -92,11 +81,12 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-md-3 label-control" for="feature">@lang('category.is_feature')</label>
+            <label class="col-md-3 label-control" for="has_child">@lang('category.has_sub_category')</label>
             <div class="col-md-9 mx-auto">
-                <select id="feature" name="feature" class="form-control">
-                    <option value="1" {{old('feature') == 1 ? 'selected' :''}}>@lang('global.yes_feature')</option>
-                    <option value="0" {{old('feature') == 0 ? 'selected' :''}}>@lang('global.not_feature')</option>
+                <select id="has_child" name="has_child" class="form-control">
+                    <option disabled selected>@lang('global.choose')</option>
+                    <option value="1"  {{old('has_child') == 1 ? 'selected' :''}}>@lang('category.has_sub_category')</option>
+                    <option value="0" {{old('has_child') == 0 ? 'selected' :''}}>@lang('category.no_have_subCategory')</option>
                 </select>
             </div>
         </div>
@@ -109,15 +99,6 @@
                 </select>
             </div>
         </div>
-            <h4 class="form-section"><i class="la la-file-image-o" style="font-size: 20px"></i> @lang('sidebar.amenities')</h4>
-                <div class="form-group row">
-                    <label class="col-md-3 label-control" for="status" >@lang('sidebar.amenities')</label>
-                    <select name="amenities[]" id="amenities" class="form-control col-md-9" multiple="">
-                    @foreach($amenities as $amenity)
-                        <option value="{{$amenity->id}}">{{$amenity->name}}</option>
-                    @endforeach
-                    </select>
-                </div>
             <div class="form-actions row">
            <div class="col-md-12 text-center">
                <button type="submit" class="btn btn-success">

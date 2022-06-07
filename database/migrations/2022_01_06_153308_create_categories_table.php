@@ -15,13 +15,12 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string("icon_map",50)->nullable();
-            $table->string("icon_category",50)->nullable();
-            $table->boolean('is_feature')->default(0); // is for show in main page or not
             $table->boolean('status')->default(1);
             $table->integer("priority"); // for sorting the categories
             $table->string('name');
+            $table->string('category_code')->unique();
             $table->string('seo_title');
+            $table->string('has_child');
             $table->mediumText("meta_description");
             $table->string("slug");
             $table->unsignedBigInteger('admin_id');

@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get("dashboard/login", 'AuthDashboardController@login')->name("dashboard.login");
 Route::post("dashboard/loginProcess", 'AuthDashboardController@loginProcess')->name("dashboard.loginProcess");
 // For Language
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
     // Dashboard
-    Route::prefix('dashboard')->name('dashboard.')->middleware(['auth:admins'])->group(function(){
+    Route::prefix('dashboard')->name('dashboard.')->middleware(['auth:admins'])->group(function () {
         // Home Page
-      Route::get('home','HomeController@index')->name("home");
+        Route::get('home', 'OrderController@index')->name("home");  //test
         //Logout
         Route::post("logout", 'AuthDashboardController@logout')->name("logout");
 
@@ -30,20 +30,34 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
         //Sub Categories Route
         Route::resource('sub_categories', 'SubCategoryController');
 
-        //Countries Route
-        Route::resource('countries', 'CountryController');
+        // Materials Route
+        Route::resource('materials', 'MaterialController')->except(['show']);
 
-        //Cities Route
-        Route::resource('cities', 'CityController');
-        
-        //Amenities Route
-        Route::resource('amenities', 'AmenityController');
+        //Prices Route
+        Route::resource('prices', 'PriceController')->except(['show', 'update']);
+        Route::put('prices/update/{id}', 'PriceController@update')->name('prices.update');
+        //Products Route
+        Route::resource('products', 'ProductController');
 
+        //Slider Route
+        Route::resource('sliders', 'SliderController');
 
+        //Section One Route
+        Route::resource('SectionOne', 'SectionOneController');
+
+        //Product Route
+        Route::resource('products', 'ProductController');
+
+        Route::get('/subcat/{id}', 'SubCategoryController@subCat')->name('subcat');
+
+        //Route::get('/settings', 'SettingController@index')->name("settings");
+
+        Route::resource('settings', 'SettingController');
+
+        //orders
+        Route::get('orders' , 'OrderController@index')->name('orders.show'); //test
+        /***********************last**********/
+        Route::post('delete/{id}', 'OrderController@deleteOrder')->name('delete.order');
 
     });
-
-
-
-
 });
